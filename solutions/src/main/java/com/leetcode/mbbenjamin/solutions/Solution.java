@@ -42,7 +42,6 @@ public class Solution {
 
 		}
 
-		System.out.println(intNumber);
 		return intNumber;
 	}
 
@@ -73,6 +72,17 @@ public class Solution {
 		}
 	}
 
+	/**
+	 * Method that receives an array of numbers along with a target value, and will
+	 * look for the first two numbers inside the array that equals the target when
+	 * summed.
+	 * 
+	 * LeetCode <a href="https://leetcode.com/problems/two-sum/">link for the problem</a>
+	 * 
+	 * @param nums
+	 * @param target
+	 * @return
+	 */
 	public int[] twoSum(int[] nums, int target) {
 
 		// Result array
@@ -83,16 +93,23 @@ public class Solution {
 
 		// Iterates over the nums array
 		for (int i = 0; i < nums.length; i++) {
-			Integer number = nums[i];
-			if (!map.containsKey(number)) {
-				// stores the value / index
-				map.put(number, Integer.valueOf(i));
-			} else {
-
+			Integer currNumber = nums[i];
+			
+			// Checks what's the desired number to sum with the current one
+			Integer desiredNumber = target - currNumber;
+			
+			// and checks if the hashMap contains it, making sure it's not the current entry
+			if (map.containsKey(desiredNumber) && map.get(desiredNumber) != i) {
+				// Gets the index from the desired number from the Map
+				result[0] = map.get(desiredNumber).intValue();
+				// Gets the index from the current number from the loop variable 'i'
+				result[1] = i;
+				break;
 			}
-			// Doesn't need to compare with others since it's the 1st value
-			if (map.size() > 1) {
-
+			
+			if (!map.containsKey(currNumber)) {
+				// stores the value / index
+				map.put(currNumber, Integer.valueOf(i));
 			}
 		}
 
