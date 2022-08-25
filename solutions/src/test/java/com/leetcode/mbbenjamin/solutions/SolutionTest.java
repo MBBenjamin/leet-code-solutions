@@ -1,8 +1,5 @@
 package com.leetcode.mbbenjamin.solutions;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-
-import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -49,6 +46,23 @@ public class SolutionTest {
 			Assert.assertTrue(arrayContainsNumber(expected4, index));
 		}
 	}
+	
+	@Test
+	public void testSearchInsert() {
+		Solution solution = new Solution();
+		int[] nums1 = {1,3,5,6};
+		int[] nums2 = {1,3,5,6};
+		int[] nums3 = {1,3,5,6};
+		int[] nums4 = {1,3,5,6,9,13};
+		int[] nums5 = {1,3,5,6};
+		
+		Assert.assertEquals(solution.searchInsert(nums1, 5), 2);
+		Assert.assertEquals(solution.searchInsert(nums2, 2), 1);
+		Assert.assertEquals(solution.searchInsert(nums3, 7), 4);
+		Assert.assertEquals(solution.searchInsert(nums4, 11), 5);
+		Assert.assertEquals(solution.searchInsert(nums5, 0), 0);
+	}
+	
 	
 	/**
 	 * Returns true if a number is contained inside an array
