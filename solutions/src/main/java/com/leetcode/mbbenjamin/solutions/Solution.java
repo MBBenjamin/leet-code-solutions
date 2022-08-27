@@ -1,6 +1,9 @@
 package com.leetcode.mbbenjamin.solutions;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class Solution {
 
@@ -152,9 +155,36 @@ public class Solution {
         return result;
     }
 	
+	/**
+	 * Method that returns if the string ransomNote can be constructed by using the letters from magazine, using each letter only once.
+	 * @param ransomNote
+	 * @param magazine
+	 * @return
+	 */
 	public boolean canConstruct(String ransomNote, String magazine) {
-    
-		return false;
+		List<String> ransomNoteList = new ArrayList<>(Arrays.asList(ransomNote.split("")));
+		String newMagazine = magazine;
+		StringBuilder strBuilder;
+
+		// Iterate over the letters of the ramson note
+		for (String letter : ransomNoteList) {
+            // Finds the index of the letter on the magazine
+			int magazineIndex = newMagazine.indexOf(letter);
+			if (magazineIndex != -1) {
+                // If the index is valid, we 'cut' the letter from the magazine, making the string shorter
+				strBuilder = new StringBuilder(newMagazine.substring(0, magazineIndex));
+				if (magazineIndex < newMagazine.length() -1) {
+					strBuilder.append(newMagazine.substring(magazineIndex + 1));
+				}
+				newMagazine = strBuilder.toString();
+			} else {
+				// If the letter is not found, the note cannot be constructed
+				return false;
+			}
+		}
+		
+        // If all letters from the note are found, we return true
+		return true;
     }
 
 }

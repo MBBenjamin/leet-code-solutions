@@ -63,6 +63,20 @@ public class SolutionTest {
 		Assert.assertEquals(solution.searchInsert(nums5, 0), 0);
 	}
 	
+	@Test
+	public void testCanConstruct() {
+		Solution solution = new Solution();
+		
+		String ransomNote1 = "a", magazine1 = "b";
+		String ransomNote2 = "aa", magazine2 = "ab";
+		String ransomNote3 = "aa", magazine3 = "aab";
+		String ransomNote4 = "aab", magazine4 = "baa";
+		
+		Assert.assertFalse(solution.canConstruct(ransomNote1, magazine1));
+		Assert.assertFalse(solution.canConstruct(ransomNote2, magazine2));
+		Assert.assertTrue(solution.canConstruct(ransomNote3, magazine3));
+		Assert.assertTrue(solution.canConstruct(ransomNote4, magazine4));
+	}
 	
 	/**
 	 * Returns true if a number is contained inside an array
